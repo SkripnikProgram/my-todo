@@ -1,0 +1,12 @@
+.all {
+    background-color: rgba(22, 21, 21, 0.3);
+    min-height: 35rem;
+    width: 35rem;
+    margin: 5rem auto;
+}
+.headerText{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:white;
+    font-size:2rem;
+    padding: 1rem;
+}

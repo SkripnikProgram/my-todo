@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ToDoListCarcass from "./ToDoListCarcass/ToDoListCarcass";
 
-function App() {
+function App(props) {
+  const [tasks, setTodos] = React.useState([]);
+  let toggleToDo = (id) => {
+    setTodos(
+      tasks.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  };
+  let removeTodo = (id) => setTodos(tasks.filter((todo) => todo.id !== id));
+  let addTodo = (text) =>
+    setTodos(
+      tasks.concat([
+        {
+          id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+          text: text,
+          completed: false,
+        },
+      ])
+    );
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToDoListCarcass
+        store={tasks}
+        onToggle={toggleToDo}
+        removeTodo={removeTodo}
+        addTodo={addTodo}
+      />
     </div>
   );
 }

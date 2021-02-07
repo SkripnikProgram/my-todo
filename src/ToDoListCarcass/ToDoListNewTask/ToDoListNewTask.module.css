@@ -1,0 +1,7 @@
+form {
+  height: 50px;
+  width: 100%;
+}
+.input input {
+  padding: 0.5rem;
+}
